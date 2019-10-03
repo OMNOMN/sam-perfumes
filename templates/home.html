@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/main.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container"> <center>
+		<h2>Perfumes Personalisation</h2>
+	</center>
+	</div>
+	</header>
+
+	<div class="ml-container"> <center>
+
+		<form action="{{ url_for('predictsomething')}}" method="POST">
+		<p>Please Tell me about yourself and your perfume preferences and liking</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="message" rows="6" cols="50" required ></textarea>
+		<br/>
+
+		<input type="submit" class="btn-info" value="predict">
+
+		{% if prediction == 1%}
+			<p>Input is: {{message_data}}</p>
+            <p>____________________________________</p>
+            <p>The 3 highest possible Top Nodes combinations {{final_top_layers}}</p>
+            <p>The 3 highest possible Middle Nodes combinations {{final_middle_layers}}</p>
+            <p>The 3 highest possible Base Nodes combinations {{final_base_layers}}</p>
+            <p>The Accords which person may like are {{words_set}}</p>
+		{% endif %}
+	</form>
+
+    </center>
+
+
+
+	</div>
+
+
+
+
+</body>
+</html>
